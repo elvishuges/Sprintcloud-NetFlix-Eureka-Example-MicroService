@@ -1,0 +1,49 @@
+package com.algaworks.patrimonio.resource;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.hibernate.type.LocalDateType;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.algaworks.patrimonio.model.Item;
+import com.algaworks.patrimonio.repository.ItemRepository;
+
+@RestController
+@CrossOrigin("${origem-permitida}")
+public class ItemResource {
+	
+	@Autowired	
+	private ItemRepository itemRepository;
+	
+	@GetMapping("/api/itens")
+	public List<Item> listar(){
+		return itemRepository.findAll();
+	}
+	
+	@PostMapping("/api/item") // metodo http diferente do feito acima
+	public Item adicionar(@RequestBody @Valid Item item ){
+		
+		LocalDate localDate = LocalDate.now();		
+		return itemRepository.save(item);
+	}
+	
+	public List<Item> delete(@PathVariable("id") long id) {
+		 itemRepository.deleteById(id);
+		 return itemRepository.findAll();
+	   }
+	}
+
+

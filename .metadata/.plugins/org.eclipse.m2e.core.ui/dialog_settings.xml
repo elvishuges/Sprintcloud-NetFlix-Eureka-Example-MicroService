@@ -9,7 +9,7 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
-			<item value="employee-producer"/>
+			<item value="eureka-server"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -45,6 +45,7 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="C:\Users\n\Documents\workspace-sts-3.9.2.RELEASE\employee-consumer\src\main\java\com\javainuse\SpringBootHelloWorldApplication.java"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
